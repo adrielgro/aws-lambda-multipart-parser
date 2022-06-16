@@ -12,6 +12,7 @@ function getBoundary(event) {
 module.exports.parse = (event, spotText) => {
     const boundary = getBoundary(event);
     const result = {};
+    event.body = Buffer.from(event.body, "base64").toString('latin1');
     event.body
         .split(boundary)
         .forEach(item => {
